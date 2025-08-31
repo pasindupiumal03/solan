@@ -1,16 +1,6 @@
 {
-  "version": 2,
-  "name": "solana-tracker",
-  "framework": "nextjs",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "regions": ["iad1"],
-  "functions": {
-    "app/api/**/*.ts": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",
@@ -50,13 +40,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
-    }
-  ],
-
-  "crons": []
+  ]
 }
