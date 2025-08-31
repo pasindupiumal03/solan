@@ -57,15 +57,6 @@
       "destination": "/api/:path*"
     }
   ],
-  "env": {
-    "SOLANA_TRACKER_API_KEY": "@solana_tracker_api_key",
-    "NEXT_PUBLIC_APP_URL": "@next_public_app_url"
-  },
-  "build": {
-    "env": {
-      "SOLANA_TRACKER_API_KEY": "@solana_tracker_api_key",
-      "NEXT_PUBLIC_APP_URL": "@next_public_app_url"
-    }
-  },
+
   "crons": []
 }
