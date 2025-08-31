@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "name": "solana-tracker",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "regions": ["iad1"],
+  "functions": {
+    "app/api/**/*.ts": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=60, stale-while-revalidate=120"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
+  ],
+  "env": {
+    "SOLANA_TRACKER_API_KEY": "@solana_tracker_api_key",
+    "NEXT_PUBLIC_APP_URL": "@next_public_app_url"
+  },
+  "build": {
+    "env": {
+      "SOLANA_TRACKER_API_KEY": "@solana_tracker_api_key",
+      "NEXT_PUBLIC_APP_URL": "@next_public_app_url"
+    }
+  },
+  "crons": []
+}
